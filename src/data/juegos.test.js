@@ -1,0 +1,2 @@
+import {describe,it,expect} from 'vitest';import {juegos,buscarJuegoPorId} from './juegos';
+describe('Catálogo LevelUp Store',()=>{it('PF-25: incluye 12 juegos originales',()=>{expect(juegos).toHaveLength(12);expect(juegos.map(j=>j.id)).toContain('cyberpunk');});it('PF-26: busca por el ID de la URL',()=>{expect(buscarJuegoPorId('minecraft')?.titulo).toBe('Minecraft');expect(buscarJuegoPorId('no-existe')).toBeUndefined();});});

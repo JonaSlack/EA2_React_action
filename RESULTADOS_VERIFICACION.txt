@@ -1,0 +1,5 @@
+Verificaciones realizadas al generar el entregable:
+- Validación de sintaxis/transpilación de los archivos JavaScript/JSX usando TypeScript transpileModule: 39 archivos analizados, 0 errores de sintaxis.
+- Pruebas de lógica del carrito con Node.js: 6/6 casos aprobados.
+- Pruebas Vitest/Testing Library y Chromium: incorporadas pero NO ejecutadas en este entorno por falta de los paquetes npm y conectividad con npm registry. Ejecutarlas en el computador con los comandos del README.
+- Compilación de Vite (npm run build): NO ejecutada en este entorno por esa misma limitación.

@@ -1,0 +1,3 @@
+import {describe,it,expect} from 'vitest';import {validarCheckout} from './Checkout';
+const valido={nombre:'Persona de Prueba',email:'demo@example.com',telefono:'+56 9 1234 5678',fecha:'2026-12-20',direccion:'Dirección ficticia 123',comuna:'Otra',pago:'tarjeta',terminos:true};
+describe('Validación del checkout',()=>{it('PF-27: formulario válido sin errores',()=>{expect(validarCheckout(valido)).toEqual({});});it('PF-28: errores para campos obligatorios',()=>{const errores=validarCheckout({...valido,email:'invalido',terminos:false,nombre:''});expect(errores).toHaveProperty('email');expect(errores).toHaveProperty('terminos');expect(errores).toHaveProperty('nombre');});});

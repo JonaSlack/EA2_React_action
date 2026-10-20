@@ -1,0 +1,3 @@
+import {describe,it,expect,beforeEach} from 'vitest';import {render,screen} from '@testing-library/react';import userEvent from '@testing-library/user-event';import {MemoryRouter} from 'react-router-dom';import {TiendaProvider} from '../context/TiendaContext';import Catalogo from './Catalogo';
+beforeEach(()=>localStorage.clear());
+describe('Chromium: filtros de catálogo',()=>{it('PF-31: busca un juego sin recargar la página',async()=>{render(<MemoryRouter><TiendaProvider><Catalogo/></TiendaProvider></MemoryRouter>);await userEvent.setup().type(screen.getByLabelText('Buscar juego por título'),'Cyberpunk');expect(screen.getByRole('status')).toHaveTextContent('1 juego(s)');});});

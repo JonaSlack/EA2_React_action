@@ -1,0 +1,46 @@
+name: Build, test and deploy LevelUp Store
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar dependencias
+        run: npm install
+      - name: Pruebas unitarias React
+        run: npm run test:run
+      - name: Pruebas de lógica Node
+        run: npm run test:node
+      - name: Compilar React con Vite
+        run: npm run build
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Subir carpeta compilada
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './dist'
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

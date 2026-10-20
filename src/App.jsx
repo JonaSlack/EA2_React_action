@@ -1,0 +1,9 @@
+import {HashRouter,Routes,Route} from 'react-router-dom';
+import {TiendaProvider,useTienda} from './context/TiendaContext';
+import NavbarSuperior from './components/NavbarSuperior';import Footer from './components/Footer';import ProtectedRoute from './components/ProtectedRoute';
+import Inicio from './pages/Inicio';import Catalogo from './pages/Catalogo';import Ofertas from './pages/Ofertas';import DetalleProducto from './pages/DetalleProducto';import CarritoPage from './pages/CarritoPage';import Checkout from './pages/Checkout';import Login from './pages/Login';import Registro from './pages/Registro';import Contacto from './pages/Contacto';import Asistente from './pages/Asistente';import NoEncontrado from './pages/NoEncontrado';
+function Aviso(){const {aviso,setAviso}=useTienda();return aviso?<div className="toast-tienda" role="status">{aviso}<button aria-label="Cerrar aviso" onClick={()=>setAviso('')}>×</button></div>:null;}
+export function RutasApp(){return <><a href="#contenido" className="skip-link">Saltar al contenido</a><NavbarSuperior/><main id="contenido" className="main-app"><Routes>
+<Route path="/" element={<Inicio/>}/><Route path="/catalogo" element={<Catalogo/>}/><Route path="/productos" element={<Catalogo/>}/><Route path="/ofertas" element={<Ofertas/>}/><Route path="/producto/:id" element={<DetalleProducto/>}/><Route path="/productos/:id" element={<DetalleProducto/>}/><Route path="/carrito" element={<CarritoPage/>}/><Route path="/checkout" element={<ProtectedRoute><Checkout/></ProtectedRoute>}/><Route path="/login" element={<Login/>}/><Route path="/registro" element={<Registro/>}/><Route path="/contacto" element={<Contacto/>}/><Route path="/asistente" element={<Asistente/>}/><Route path="*" element={<NoEncontrado/>}/>
+</Routes></main><Footer/><Aviso/></>}
+export default function App(){return <HashRouter><TiendaProvider><RutasApp/></TiendaProvider></HashRouter>}

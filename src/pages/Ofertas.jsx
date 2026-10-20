@@ -1,0 +1,2 @@
+import {juegos} from '../data/juegos';import ListaProductos from '../components/ListaProductos';import PaginaHero from '../components/PaginaHero';
+export default function Ofertas(){const ofertas=juegos.filter(j=>j.precioAnterior);return <><PaginaHero titulo="Ofertas especiales" descripcion="Aprovecha los precios promocionales del catálogo."/><section className="seccion"><div className="contenedor"><p className="ayuda">{ofertas.length} título(s) con descuento</p><ListaProductos productos={ofertas}/></div></section></>}

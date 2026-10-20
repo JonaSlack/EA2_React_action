@@ -1,0 +1,1 @@
+import {Link} from 'react-router-dom';export default function NoEncontrado(){return <main className="contenedor seccion"><h1>Página no encontrada</h1><p>Comprueba la dirección o vuelve al inicio.</p><Link to="/" className="btn btn-primario">Volver al inicio</Link></main>}
