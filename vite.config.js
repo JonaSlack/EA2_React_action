@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   // Ruta del repositorio en GitHub Pages (cambia si usas otro nombre).
-  base: '/levelup-store-react/',
+  base: '/EA2_React_action/',
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.js'],
